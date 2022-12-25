@@ -1,0 +1,58 @@
+﻿<bg child-control-height='false' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+	<horizontal id='outer' horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='3' pad='2' pref-width='100' child-align='MiddleCenter'>
+		<vertical spacing='1' horizontal-fit='PreferredSize' pad='5' pref-width='100' child-align='MiddleCenter'>
+			<text text='Leaderboards for custom levels require a leaderboard mod.' align="Center"></text>
+			<text text='Please choose one (or both) of the following options' font-size='3.5' align="Center" color="#7F7F7F"></text>
+
+			<vertical spacing="4" pad-top="2">
+				<!-- ScoreSaber -->
+				<horizontal pref-height="15" pref-width="80">
+					<horizontal pref-width="15" pref-height="15">
+						<image id='icon' src='WhyIsThereNoLeaderboard.UI.Resources.ss.png' preserve-aspect='true'/>
+					</horizontal>
+					<vertical child-align='MiddleLeft' pref-width='35' horizontal-fit='PreferredSize' >
+						<text text='ScoreSaber' align="Left" font-size="6"></text>
+						<text rich-text="true" text="&lt;line-height=60%&gt;Largest BS leaderboard system. Earn PP from ranked maps, compare scores with others and watch replays." word-wrapping='true' font-size='2.75' align="Left" color="#7F7F7F" line-height="1"></text>
+					</vertical>
+					<vertical child-align='MiddleRight'>
+						<button text='More Info' on-click='ss-info-click'/>
+						<primary-button id='ss-download' text='Download'  on-click='ss-download-click'/>
+					</vertical>
+				</horizontal>
+			
+				<!-- BeatLeader -->
+				<horizontal pref-height="15">
+					<horizontal pref-width="15" pref-height="15">
+						<image id='icon' src='WhyIsThereNoLeaderboard.UI.Resources.bl.png' preserve-aspect='true'/>
+					</horizontal>
+					<vertical child-align='MiddleLeft' pref-width='35' horizontal-fit='PreferredSize' >
+						<text text='BeatLeader' align="Left" font-size="6"></text>
+						<text rich-text="true" text="&lt;line-height=60%&gt;An open-source leaderboard with map voting, events, modifiers and a ton of stats for you to improve." word-wrapping='true' font-size='2.75' align="Left" color="#7F7F7F" line-height="1"></text>
+					</vertical>
+					<vertical child-align='MiddleRight'>
+						<button text='More Info' on-click='bl-info-click'/>
+						<primary-button id='bl-download' text='Download' on-click='bl-download-click'/>
+					</vertical>
+				</horizontal>
+			</vertical>
+			
+			<!-- Confirmation Modals -->
+			<modal id='moreInfoModal' show-event='open-moreInfoModal' hide-event='close-moreInfoModal,closeAllModals' move-to-center='true' size-delta-y='35' size-delta-x='60'>
+				<vertical>
+					<horizontal bg='panel-top' pad-left='10' pad-right='10' horizontal-fit='PreferredSize'>
+						<text id='info-title' text='More Info' align='Center' font-size='7' />
+					</horizontal>
+					<vertical horizontal-fit='PreferredSize' vertical-fit='Unconstrained'>
+						<vertical pref-width='50' horizontal-fit='PreferredSize' vertical-fit='PreferredSize'>
+							<text id='info-text' text='More Info has been opened in your browser.' align='Center' word-wrapping='true' />
+						</vertical>
+					</vertical>
+					<horizontal pref-width='50' horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' anchor-pos-y='50' >
+						<button id='closeButton' on-click='closePressed' text='Close' pad='0' pref-height='8' pref-width='20' anchor-pos-y='25'></button>
+					</horizontal>
+				</vertical>
+			</modal>
+			
+		</vertical>
+	</horizontal>
+</bg>

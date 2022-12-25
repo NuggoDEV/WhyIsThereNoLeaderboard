@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "WhyIsThereNoLeaderboard",
+  "name": "WhyIsThereNoLeaderboard",
+  "author": "Bobbie",
+  "version": "1.0.0",
+  "description": "Stopgap plugin that clarifies why leaderboards on custom songs are not supported and allows the user to download one.",
+  "gameVersion": "1.27.0",
+  "dependsOn": {
+    "BSIPA": "^4.2.2",
+    "BeatSaberMarkupLanguage": "^1.6.8",
+    "SiraUtil": "^3.1.0"
+  }
+}
