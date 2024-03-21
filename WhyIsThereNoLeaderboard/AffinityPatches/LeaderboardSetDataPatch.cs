@@ -14,11 +14,11 @@ namespace WhyIsThereNoLeaderboard.AffinityPatches
         }
 
         [AffinityPatch(typeof(PlatformLeaderboardViewController), nameof(PlatformLeaderboardViewController.SetData))]
-        private void Patch(IDifficultyBeatmap difficultyBeatmap)
+        private void Patch(BeatmapKey beatmapKey)
         {
             foreach (var notifyLeaderboardSet in notifyLeaderboardSets)
             {
-                notifyLeaderboardSet.OnLeaderboardSet(difficultyBeatmap);
+                notifyLeaderboardSet.OnLeaderboardSet(beatmapKey);
             }
         }
     }

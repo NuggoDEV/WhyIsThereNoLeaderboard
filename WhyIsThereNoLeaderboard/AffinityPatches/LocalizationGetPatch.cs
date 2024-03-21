@@ -1,4 +1,4 @@
-﻿using Polyglot;
+﻿using BGLib.Polyglot;
 using SiraUtil.Affinity;
 
 namespace WhyIsThereNoLeaderboard.AffinityPatches
