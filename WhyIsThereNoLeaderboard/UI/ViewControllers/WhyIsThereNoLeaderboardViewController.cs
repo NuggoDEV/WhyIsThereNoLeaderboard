@@ -12,11 +12,11 @@ using WhyIsThereNoLeaderboard.Interfaces;
 using WhyIsThereNoLeaderboard.Managers;
 using Zenject;
 
+#nullable enable
 namespace WhyIsThereNoLeaderboard.UI.ViewControllers
 {
     internal class WhyIsThereNoLeaderboardViewController : BSMLAutomaticViewController, IInitializable, IDisposable, INotifyLeaderboardSet
     {
-        //public override string Content => Utilities.GetResourceContent(Assembly.GetAssembly(GetType()), "WhyIsThereNoLeaderboard.UI.Views.LeaderboardInfo.bsml");
 
         [Inject]
         private readonly PlatformLeaderboardViewController platformLeaderboardViewController = null!;
@@ -25,7 +25,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
         private BeatmodsManager _beatmodsManager = null!;
 
         [UIParams]
-        internal BeatSaberMarkupLanguage.Parser.BSMLParserParams parserParams = null;
+        internal BeatSaberMarkupLanguage.Parser.BSMLParserParams? parserParams = null;
 
         [UIComponent("info-text")]
         private TextMeshProUGUI infoText = null!;
@@ -57,25 +57,20 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             customFloatingScreenGO.name = "WhyIsThereNoLeaderboardPanel";
 
             BSMLParser.instance.Parse(Utilities.GetResourceContent(Assembly.GetAssembly(GetType()), "WhyIsThereNoLeaderboard.UI.Views.LeaderboardInfo.bsml"), customPanelFloatingScreen.gameObject, this);
-            //BeatSaberMarkupLanguage.Parse();
             platformLeaderboardViewController.didActivateEvent += OnLeaderboardActivated;
         }
 
-        public void Dispose()
-        {
-            platformLeaderboardViewController.didActivateEvent -= OnLeaderboardActivated;
-
-        }
+        public void Dispose() => platformLeaderboardViewController.didActivateEvent -= OnLeaderboardActivated;
 
         private void OnLeaderboardStatusUpdated()
         {
             if(selectedLevelKey != null && selectedLevelKey.Value.levelId.StartsWith("custom_level_"))
             {
-                customPanelFloatingScreen.gameObject.SetActive(true);
+                customPanelFloatingScreen?.gameObject.SetActive(true);
             }
             else
             {
-                customPanelFloatingScreen.gameObject.SetActive(false);
+                customPanelFloatingScreen?.gameObject.SetActive(false);
             }
         }
 
@@ -87,7 +82,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             infoText.text = "More info on ScoreSaber has been opened in your browser.";
             infoTitle.text = "More Info";
 
-            parserParams.EmitEvent("open-moreInfoModal");
+            parserParams?.EmitEvent("open-moreInfoModal");
         }
 
         [UIAction("bl-info-click")]
@@ -98,7 +93,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             infoText.text = "More info on BeatLeader has been opened in your browser.";
             infoTitle.text = "More Info";
 
-            parserParams.EmitEvent("open-moreInfoModal");
+            parserParams?.EmitEvent("open-moreInfoModal");
         }
 
         [UIAction("closePressed")]
@@ -107,7 +102,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             scoreSaberDownloadbutton.interactable = true;
             beatLeaderDownloadbutton.interactable = true;
 
-            parserParams.EmitEvent("closeAllModals");
+            parserParams?.EmitEvent("closeAllModals");
         }
 
         [UIAction("ss-download-click")]
@@ -125,11 +120,11 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             }
             else
             {
-                infoText.text = "ScoreSaber failed to install. Please install manually using Mod Assistant.";
+                infoText.text = "ScoreSaber failed to install. Please install manually using your preferred mod installer.";
                 infoTitle.text = "Download";
             }
 
-            parserParams.EmitEvent("open-moreInfoModal");
+            parserParams?.EmitEvent("open-moreInfoModal");
         }
 
         [UIAction("bl-download-click")]
@@ -147,23 +142,22 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             }
             else
             {
-                infoText.text = "BeatLeader failed to install. Please install manually using Mod Assistant.";
+                infoText.text = "BeatLeader failed to install. Please install manually using your preferred mod installer.";
                 infoTitle.text = "Download";
             }
 
-            parserParams.EmitEvent("open-moreInfoModal");
+            parserParams?.EmitEvent("open-moreInfoModal");
         }
 
         private void OnLeaderboardActivated(bool firstactivation, bool addedtohierarchy, bool screensystemenabling)
         {
-            //customPanelFloatingScreen.transform.position = platformLeaderboardViewController.transform.position;
-            customPanelFloatingScreen.GetComponent<CurvedCanvasSettings>().SetRadius(platformLeaderboardViewController.transform.parent.parent.GetComponent<CurvedCanvasSettings>().radius);
+            customPanelFloatingScreen?.GetComponent<CurvedCanvasSettings>().SetRadius(platformLeaderboardViewController.transform.parent.parent.GetComponent<CurvedCanvasSettings>().radius);
             OnLeaderboardStatusUpdated();
         }
 
-        public void OnLeaderboardSet(BeatmapKey difficultyBeatmap)
+        public void OnLeaderboardSet(BeatmapKey beatmapKey)
         {
-            selectedLevelKey = difficultyBeatmap;
+            selectedLevelKey = beatmapKey;
             OnLeaderboardStatusUpdated();
         }
     }

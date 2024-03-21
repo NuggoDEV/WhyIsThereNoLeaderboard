@@ -14,8 +14,8 @@ namespace WhyIsThereNoLeaderboard.Installers
 
         public override void InstallBindings()
         {
-            // Surely these will be the only two necessary mods to check for :clueless:
-            if(PluginManager.GetPluginFromId("ScoreSaber") == null && PluginManager.GetPluginFromId("BeatLeader") == null && PluginManager.GetPluginFromId("Hitbloq") == null)
+            if (PluginManager.GetPluginFromId("ScoreSaber") == null && PluginManager.GetPluginFromId("BeatLeader") == null && PluginManager.GetPluginFromId("Hitbloq") == null &&
+                PluginManager.GetPluginFromId("AccSaber") == null && PluginManager.GetPluginFromId("LocalLeaderboard") == null)
             {
                 Container.BindInterfacesAndSelfTo<WhyIsThereNoLeaderboardViewController>().FromNewComponentAsViewController().AsSingle();
 

@@ -3,7 +3,7 @@
   "id": "WhyIsThereNoLeaderboard",
   "name": "WhyIsThereNoLeaderboard",
   "author": "Bobbie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stopgap plugin that clarifies why leaderboards on custom songs are not supported and allows the user to download one.",
   "gameVersion": "1.35.0",
   "dependsOn": {
