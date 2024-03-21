@@ -39,7 +39,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
         [UIComponent("bl-download")]
         private Button beatLeaderDownloadbutton = null!;
 
-        private IPreviewBeatmapLevel? selectedLevel;
+        private BeatmapKey? selectedLevelKey;
         private FloatingScreen? customPanelFloatingScreen;
 
         public void Initialize()
@@ -69,7 +69,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
 
         private void OnLeaderboardStatusUpdated()
         {
-            if(selectedLevel != null && selectedLevel is CustomPreviewBeatmapLevel)
+            if(selectedLevelKey != null && selectedLevelKey.Value.levelId.StartsWith("custom_level_"))
             {
                 customPanelFloatingScreen.gameObject.SetActive(true);
             }
@@ -161,9 +161,9 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             OnLeaderboardStatusUpdated();
         }
 
-        public void OnLeaderboardSet(IDifficultyBeatmap difficultyBeatmap)
+        public void OnLeaderboardSet(BeatmapKey difficultyBeatmap)
         {
-            selectedLevel = difficultyBeatmap.level;
+            selectedLevelKey = difficultyBeatmap;
             OnLeaderboardStatusUpdated();
         }
     }
