@@ -56,7 +56,7 @@ namespace WhyIsThereNoLeaderboard.UI.ViewControllers
             customFloatingScreenGO.SetActive(true);
             customFloatingScreenGO.name = "WhyIsThereNoLeaderboardPanel";
 
-            BSMLParser.instance.Parse(Utilities.GetResourceContent(Assembly.GetAssembly(GetType()), "WhyIsThereNoLeaderboard.UI.Views.LeaderboardInfo.bsml"), customPanelFloatingScreen.gameObject, this);
+            BSMLParser.Instance.Parse(Utilities.GetResourceContent(Assembly.GetAssembly(GetType()), "WhyIsThereNoLeaderboard.UI.Views.LeaderboardInfo.bsml"), customPanelFloatingScreen.gameObject, this);
             platformLeaderboardViewController.didActivateEvent += OnLeaderboardActivated;
         }
 
