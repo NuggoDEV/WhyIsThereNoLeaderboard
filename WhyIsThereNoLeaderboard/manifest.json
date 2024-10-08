@@ -3,12 +3,12 @@
   "id": "WhyIsThereNoLeaderboard",
   "name": "WhyIsThereNoLeaderboard",
   "author": "Bobbie",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stopgap plugin that clarifies why leaderboards on custom songs are not supported and allows the user to download one.",
-  "gameVersion": "1.35.0",
+  "gameVersion": "1.37.5",
   "dependsOn": {
-    "BSIPA": "^4.3.3",
-    "BeatSaberMarkupLanguage": "^1.9.0",
-    "SiraUtil": "^3.1.7"
+    "BSIPA": "^4.3.5",
+    "BeatSaberMarkupLanguage": "^1.12.2",
+    "SiraUtil": "^3.1.12"
   }
 }
